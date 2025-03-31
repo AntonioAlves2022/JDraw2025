@@ -101,6 +101,14 @@ public class JFPaint extends JFrame{
         });
          
        // Combobox para o tamanho do pincel
+       String[] sizes = {"1", "2", "4", "6", "8"};
+       cbxSize = new JComboBox<>(sizes);
+       cbxSize.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 
+            }
+        });
         
     }
 }
