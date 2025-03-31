@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -101,14 +102,29 @@ public class JFPaint extends JFrame{
         });
          
        // Combobox para o tamanho do pincel
-       String[] sizes = {"1", "2", "4", "6", "8"};
+       String[] sizes = {"1", "2", "4", "6", "8", "16", "32"};
        cbxSize = new JComboBox<>(sizes);
        cbxSize.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                 
+                 String selectedSize
+                         = (String)cbxSize.getSelectedItem();
+                 model.setBrushSize(Integer.valueOf(selectedSize));
             }
         });
+       
+       //Adicionar os componentes no painel de controle
+       controlPanel.add(brushButton);
+       controlPanel.add(eraserButton);
+       controlPanel.add(new JLabel("Cor:"));
+       controlPanel.add(cbxColor);
+       controlPanel.add(new JLabel("Tamanho"));
+       controlPanel.add(cbxSize);
+       add(controlPanel, BorderLayout.NORTH);
+       pack();
+       
+       
+       
         
     }
 }
